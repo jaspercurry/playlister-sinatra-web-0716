@@ -9,13 +9,10 @@ class Artist <ActiveRecord::Base
 
   def self.find_by_slug(slug)
     slug = slug.split("-")
-
     caps = slug.map do |item|
       item.capitalize
     end.join(" ")
-
     Artist.find_by(name: caps)
-
   end
 
   #   Artist.find_by(name: )
