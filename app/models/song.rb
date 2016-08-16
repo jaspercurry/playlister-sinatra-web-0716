@@ -8,15 +8,7 @@ class Song <ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    slug = slug.split("-")
-    caps = slug.map do |item|
-      item.downcase
-    end.join(" ")
-      Song.all.each do |song|
-        if song.name.downcase == caps
-          return song
-        end
-      end
+    self.all.detect {|element| element.slug == slug}
   end
 
 end

@@ -8,17 +8,6 @@ class Artist <ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    slug = slug.split("-")
-    caps = slug.map do |item|
-      item.downcase
-    end.join(" ")
-      Artist.all.each do |artist|
-        if artist.name.downcase == caps
-          return artist
-        end
-      end
+    self.all.detect {|element| element.slug == slug}
   end
-
 end
-
-# self.all.detect {|element| element.name.slug == slug}
