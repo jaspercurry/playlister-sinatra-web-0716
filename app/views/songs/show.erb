@@ -1,5 +1,9 @@
 <h1>Voila!</h1>
 
+<%if @message%>
+<%= @message %>
+<%end %>
+
 <h1> <%= @song.name %> </h1>
 
 <a href="/artists/<%=@song.artist.slug %>"><%= @song.artist.name %></a>

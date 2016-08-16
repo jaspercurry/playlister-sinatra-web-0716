@@ -7,14 +7,15 @@
   <label> Song Name </label>
   <input type="text" name="Name"> </br>
 
-  <label> Genres </label>
+  <label> Select exitsing Genres </label>
 
   <% Genre.all.each do |genre| %>
-
-    <input id="<%= genre.name %>"
-    type="checkbox" name="genres[]"
-    value="<%= genre.id %>">
+    <input id="<%= genre.name %>" value="<%= genre.id %>" type="checkbox" name="genres[]" > <%=genre.name%><br>
   <% end %>
+
+<label> Create New Genre</label>
+<input type="text" name="genre[:name]">
+
 
   <input type="submit" value="Create">
 </form>

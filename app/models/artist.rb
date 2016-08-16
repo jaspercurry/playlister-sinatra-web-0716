@@ -13,7 +13,6 @@ class Artist <ActiveRecord::Base
       item.downcase
     end.join(" ")
       Artist.all.each do |artist|
-        
         if artist.name.downcase == caps
           return artist
         end
@@ -21,3 +20,5 @@ class Artist <ActiveRecord::Base
   end
 
 end
+
+# self.all.detect {|element| element.name.slug == slug}
