@@ -10,9 +10,14 @@ class Genre <ActiveRecord::Base
   def self.find_by_slug(slug)
     slug = slug.split("-")
     caps = slug.map do |item|
-      item.capitalize
+      item.downcase
     end.join(" ")
-    Genre.find_by(name: caps)
+      Genre.all.each do |genre|
+
+        if genre.name.downcase == caps
+          return genre
+        end
+      end
   end
 
 end
