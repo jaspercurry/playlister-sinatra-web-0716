@@ -6,4 +6,13 @@ class Genre <ActiveRecord::Base
   def slug
     self.name.slugify
   end
+
+  def self.find_by_slug(slug)
+    slug = slug.split("-")
+    caps = slug.map do |item|
+      item.capitalize
+    end.join(" ")
+    Genre.find_by(name: caps)
+  end
+
 end
