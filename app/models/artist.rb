@@ -10,17 +10,14 @@ class Artist <ActiveRecord::Base
   def self.find_by_slug(slug)
     slug = slug.split("-")
     caps = slug.map do |item|
-      item.capitalize
+      item.downcase
     end.join(" ")
-    Artist.find_by(name: caps)
+      Artist.all.each do |artist|
+        
+        if artist.name.downcase == caps
+          return artist
+        end
+      end
   end
-
-  #   Artist.find_by(name: )
-  #
-  # describe "Class methods" do
-  #   it "given the slug can find an Artist" do
-  #     slug = "taylor-swift"
-  #     expect((Artist.find_by_slug(slug)).name).to eq("Taylor Swift")
-  #   end
 
 end
